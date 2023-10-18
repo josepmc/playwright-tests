@@ -3,3 +3,4 @@ reports
 **/coverage/*
 **/build/*
 **/__snapshots__/*
+tests/fixtures
