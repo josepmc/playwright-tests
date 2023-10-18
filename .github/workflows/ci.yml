@@ -79,6 +79,8 @@ jobs:
       - name: Test
         run: |
           bunx playwright test
+        env:
+          CI: true
 
       - uses: actions/upload-artifact@v3
         if: always()
