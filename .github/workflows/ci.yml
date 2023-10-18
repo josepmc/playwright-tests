@@ -66,7 +66,6 @@ jobs:
 
   e2e-test:
     runs-on: macos-latest
-    needs: build
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -75,7 +74,7 @@ jobs:
       - name: Install Dependencies
         run: |
           bun install --frozen-lockfile
-          bunx playwright install-deps --with-deps
+          bunx playwright install --with-deps
 
       - name: Test
         run: |
