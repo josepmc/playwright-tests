@@ -32,11 +32,10 @@ jobs:
 
       - name: Build
         run: |
-          docker build . --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache --progress plain
+          docker buildx build --platform=linux/amd64 --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache --progress plain --builder ${{ steps.buildx.outputs.name }} .
 
   lint:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -52,7 +51,6 @@ jobs:
 
   unit-test:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
