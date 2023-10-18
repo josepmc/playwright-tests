@@ -23,7 +23,7 @@ jobs:
         id: buildx
 
       - name: Cache Docker layers
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: /tmp/.buildx-cache
           key: ${{ github.repository }}-build-v1-${{ github.sha }}

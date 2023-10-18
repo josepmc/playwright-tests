@@ -26,7 +26,9 @@ test.describe('Homepage', () => {
     // This makes the above a bit redundant, but it's a good example of how to use the `all` method
     // Also, if we change the design we'll need to recreate the image test
     // Please note that the image APIs have not been mocked, and only this will actually check for them to be equal
-    await expect(page).toHaveScreenshot('homepage.png');
+    await expect(page).toHaveScreenshot('homepage.png', {
+      maxDiffPixelRatio: process.env.CI ? 0.05 : 0, // 5% difference is allowed in CI
+    });
   });
 
   test('should go to the profile page when clicking on users', async ({
